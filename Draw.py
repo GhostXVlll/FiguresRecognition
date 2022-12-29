@@ -49,12 +49,13 @@ canvas.grid(row=2, column=0, columnspan=7, padx=5, pady=5)
 
 canvas.bind('<B1-Motion>', draw)
 
-image1 = Image.new('RGB', (28, 28), "white")  # Image scale
+image1 = Image.new('1', (28, 28), "white")  # Image scale
 draw_img = ImageDraw.Draw(image1)
 
-Label(root, text='Draw the figure from \"0\" to \"9\" \n').grid(row=1, column=0, padx=6)
+Label(root, text='Draw the figure from \"0\" to \"9\" \n').grid(row=0, column=0, padx=6)
 Button(root, text='Clear: ', width=10, command=clear_canvas).grid(row=1, column=1)
-Button(root, text='Predict figure: ', width=10, command=predict).grid(row=1, column=2)
-Button(root, text='Quit', width=10, command=root.quit).grid(row=1, column=3)
+Button(root, text='Recognize figure: ', width=15, command=predict).grid(row=1, column=2)
+Button(root, text='Quit', width=10, command=root.quit).grid(row=1, column=4)
+
 
 root.mainloop()

@@ -45,8 +45,6 @@ def learning():
     model.evaluate(x_test, y_test_cat)
     model.save('model/')  # Сохранение модели
 
-
-"""def test():
     # Проверка распознавания цифр
     n = 0
     x = np.expand_dims(x_test[n], axis=0)
@@ -66,15 +64,11 @@ def learning():
     x_false = x_test[~mask]
     p_false = pred[~mask]
     print(x_false.shape)
-    # Вывод первых 5 неверных изображений
+    """# Вывод первых 5 неверных изображений
     for idx in range(5):
         print("Значение сети: " + str(p_false[idx]))
         plt.imshow(x_false[idx], cmap=plt.cm.binary)
-        plt.show()
-    # загрузка изображения
-    filename = 'image.png'
-    print('filaneme: ', filename, '\tPrediction: ', prediction(model, filename))
-    """
+        plt.show()"""
 
 
 def prediction(model, filename, display=True):  # Распознание цифры из файла
