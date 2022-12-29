@@ -22,7 +22,6 @@ def learning():
         plt.xticks([])
         plt.yticks([])
         plt.imshow(x_train[i], cmap=plt.cm.binary)
-
     plt.show()"""
 
     model = keras.Sequential([
@@ -51,36 +50,27 @@ def learning():
     # Проверка распознавания цифр
     n = 0
     x = np.expand_dims(x_test[n], axis=0)
-
     res = model.predict(x)
     print(res)
     print(f"Распознанная цифра: {np.argmax(res)}")
-
     plt.imshow(x_test[n], cmap=plt.cm.binary)
     plt.show()
-
     # Распознавание всей тестовой выборки
     pred = model.predict(x_test)
     pred = np.argmax(pred, axis=1)
-
     print(pred.shape)
-
     print(pred[:20])
     print(y_test[:20])
-
     # Выделение ошибок
     mask = pred == y_test
     x_false = x_test[~mask]
     p_false = pred[~mask]
-
     print(x_false.shape)
-
     # Вывод первых 5 неверных изображений
     for idx in range(5):
         print("Значение сети: " + str(p_false[idx]))
         plt.imshow(x_false[idx], cmap=plt.cm.binary)
         plt.show()
-
     # загрузка изображения
     filename = 'image.png'
     print('filaneme: ', filename, '\tPrediction: ', prediction(model, filename))
@@ -102,18 +92,18 @@ def prediction(model, filename, display=True):  # Распознание циф�
     return np.argmax(model.predict(image))
 
 
-def pred():
-    model = keras.models.load_model('model/')
-    print(f'Model {model} was loaded')
+def main():
+    try:
+        model = keras.models.load_model('model/')
+        print(f'Model {model} was loaded')
 
-    if model == None:
+        filename = 'image.png'
+        print('filaneme: ', filename, '\tPrediction: ', prediction(model, filename, False))
+
+    except Exception:
+        print("Model not found")
         learning()
 
-    filename = 'image.png'
-    print('filaneme: ', filename, '\tPrediction: ', prediction(model, filename, False))
 
-#
-# __Main
-#
-
-
+if __name__ == "main":
+    main()
